@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/sidenav.css" />
+    <link rel="stylesheet" href="./css/modal.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title>News</title>
+  </head>
+  <body>
+    <section id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+        >&times;</a
+      >
+      <a href="#" data-toggle="modal" data-target="#loginModal">Ingresar</a>
+      <a href="#" data-toggle="modal" data-target="#signupModal">Registrarte</a>
+    </section>
+    <section class="modal animate" id="loginModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Ingresar</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form id="loginForm" action="">
+              <div class="form-group">
+                <label class="font-weight-light" for="loginEmail">
+                  Correo electrónico</label
+                >
+                <input
+                  type="email"
+                  name="loginEmail"
+                  class="form-control"
+                  id="loginEmail"
+                  placeholder="Escribe tu correo electrónico"
+                />
+              </div>
+              <div class="form-group">
+                <label class="font-weight-light" for="loginPwd"
+                  >Contraseña</label
+                >
+                <input
+                  type="password"
+                  name="loginPwd"
+                  class="form-control"
+                  id="loginPwd"
+                  aria-describedby="pwdDescription"
+                  placeholder="Escribe tu contraseña"
+                />
+                <small id="pwdDescription" class="font-weight-bold"
+                  >Mínimo de 6 caractéres.</small
+                >
+              </div>
+            </form>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-success" data-dismiss="modal">
+              Ingresar
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="modal animate" id="signupModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal Header -->
+          <div class="modal-header">
+            <h4 class="modal-title">Registrarte</h4>
+            <button type="button" class="close" data-dismiss="modal">
+              &times;
+            </button>
+          </div>
+          <!-- Modal body -->
+          <div class="modal-body">
+            <form id="signupForm" action="">
+              <div class="form-group">
+                <label class="font-weight-light" for="signUpName">
+                  Nombre</label
+                >
+                <input
+                  type="text"
+                  name="signUpName"
+                  class="form-control"
+                  id="signUpName"
+                  placeholder="Escribe tu nombre"
+                />
+              </div>
+              <div class="form-group">
+                <label class="font-weight-light" for="signUpEmail">
+                  Correo electrónico</label
+                >
+                <input
+                  type="email"
+                  name="signUpEmail"
+                  class="form-control"
+                  id="signUpEmail"
+                  placeholder="Escribe tu correo electrónico"
+                />
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="signUpUserType"
+                    >Tipo de usuario</label
+                  >
+                </div>
+                <select class="custom-select" id="signUpUserType">
+                  <option selected>Choose...</option>
+                  <option value="reportero">Reportero</option>
+                  <option value="administrador">Administrador</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="font-weight-light" for="signUpPwd"
+                  >Contraseña</label
+                >
+                <input
+                  type="password"
+                  name="signUpPwd"
+                  class="form-control"
+                  id="signUpPwd"
+                  aria-describedby="pwdDescription"
+                  placeholder="Escribe tu contraseña"
+                />
+                <small id="pwdDescription" class="font-weight-bold"
+                  >Mínimo de 6 caractéres.</small
+                >
+              </div>
+            </form>
+          </div>
+          <!-- Modal footer -->
+          <div class="modal-footer d-flex justify-content-center">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              Regístrate
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div id="main" class="main">
+      <header class="header">
+        <a
+          class="header__text"
+          href="javascript:window.location.assign('index.html')"
+        >
+          <h1 id="header__text">News</h1>
+        </a>
+        <form action="">
+          <input class="header__input" type="text" placeholder="Search..." />
+        </form>
+        <img
+          class="header__img"
+          src="./assets/img/shapes.png"
+          onclick="toggleNav()"
+          alt="more"
+        />
+      </header>
+      <div class="container-fluid">
+        <div class="row ml-3 mr-3 mt-4">
+          <div class="col-4">
+            <h1>
+              Tendencia
+            </h1>
+            <div class="container trending">
+              <img
+                src="./assets/img/1*FneePkpVPGTeG3zP1LR6Mg.jpeg"
+                width="100%"
+                alt=""
+              />
+              <h3 class="mt-2">
+                I Just Flew. It Was Worse Than I Thought It Would Be.
+              </h3>
+              <p>
+                I’ve come to discover that suddenly I’m the stranger in the
+                place I’ve called home.
+              </p>
+              <small>Daniel Alcudia</small>
+              <small>2 </small>
+              <img src="./assets/img/like.png" width="13px" alt="like" />
+            </div>
+            <div class="container mt-4">
+              <h4>Sugerencia del superusuario:</h4>
+              <p class="editors-pick">
+                The 9 Subscriptions You Should Bring With You Into 2020 For
+                $32.43 each month, I can radically transform myself.
+              </p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div id="most-popular-posts" class="mt-2">
+              <h2>Más populares en News:</h2>
+              <section class="my-carousel">
+                <div class="my-carousel__container">
+                  <div class="my-carousel-item">
+                    <img
+                      class="my-carousel-item__img"
+                      src="https://images.unsplash.com/photo-1588888055870-8a68971e3c54?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80"
+                      alt="Cat"
+                    />
+                    <div class="my-carousel-item__details">
+                      <p class="my-carousel-item__details--title">
+                        Lorem ipsum dolor sit
+                      </p>
+                      <div
+                        class="d-flex flex-row text-white align-items-center"
+                      >
+                        <p class="my-carousel-item__details--subtitle">
+                          Daniel Alcudia
+                        </p>
+                        <span class="ml-2 mr-1 font-weight-bold">
+                          15 likes
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="my-carousel-item">
+                    <img
+                      class="my-carousel-item__img"
+                      src="https://images.unsplash.com/photo-1587994123299-c1075c8dceca?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80"
+                      alt="Cat"
+                    />
+                    <div class="my-carousel-item__details">
+                      <p class="my-carousel-item__details--title">
+                        Lorem ipsum dolor sit amet
+                      </p>
+                      <div
+                        class="d-flex flex-row text-white align-items-center"
+                      >
+                        <p class="my-carousel-item__details--subtitle">
+                          Daniel Alcudia
+                        </p>
+                        <span class="ml-2 mr-1 font-weight-bold">
+                          15 likes
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="my-carousel-item">
+                    <img
+                      class="my-carousel-item__img"
+                      src="https://images.unsplash.com/photo-1589121696202-c7a645751f0a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2096&q=80"
+                      alt="Cat"
+                    />
+                    <div class="my-carousel-item__details">
+                      <p class="my-carousel-item__details--title">
+                        Lorem ipsum dolor sit amet
+                      </p>
+                      <div
+                        class="d-flex flex-row text-white align-items-center"
+                      >
+                        <p class="my-carousel-item__details--subtitle">
+                          Daniel Alcudia
+                        </p>
+                        <span class="ml-2 mr-1 font-weight-bold">
+                          15 likes
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div id="most-recent-posts" class="mt-2">
+              <h2>Publicaciones más recientes:</h2>
+              <section class="my-carousel">
+                <div class="my-carousel__container">
+                  <div class="my-carousel-item">
+                    <img
+                      class="my-carousel-item__img"
+                      src="https://images.unsplash.com/photo-1589017919790-dd04037e0766?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+                      alt="Cat"
+                    />
+                    <div class="my-carousel-item__details">
+                      <p class="my-carousel-item__details--title">
+                        Título descriptivoasdaskndaksdnask sdasd
+                      </p>
+                      <div
+                        class="d-flex flex-row text-white align-items-center"
+                      >
+                        <p class="my-carousel-item__details--subtitle">
+                          Ezequiel Meraz
+                        </p>
+                        <span class="ml-2 mr-1 font-weight-bold">
+                          30 likes
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="my-carousel-item">
+                    <img
+                      class="my-carousel-item__img"
+                      src="https://images.unsplash.com/photo-1588614478415-f25a77edc40f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1283&q=80"
+                      alt="Cat"
+                    />
+                    <div class="my-carousel-item__details">
+                      <p class="my-carousel-item__details--title">
+                        Título descriptivo
+                      </p>
+                      <div
+                        class="d-flex flex-row text-white align-items-center"
+                      >
+                        <p class="my-carousel-item__details--subtitle">
+                          Ezequiel Meraz
+                        </p>
+                        <span class="ml-2 mr-1 font-weight-bold">
+                          30 likes
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="my-carousel-item">
+                    <img
+                      class="my-carousel-item__img"
+                      src="https://images.unsplash.com/photo-1589104666851-dffe3a15aace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1911&q=80"
+                      alt="Cat"
+                    />
+                    <div class="my-carousel-item__details">
+                      <p class="my-carousel-item__details--title">
+                        Título descriptivo
+                      </p>
+                      <div
+                        class="d-flex flex-row text-white align-items-center"
+                      >
+                        <p class="my-carousel-item__details--subtitle">
+                          Ezequiel Meraz
+                        </p>
+                        <span class="ml-2 mr-1 font-weight-bold">
+                          30 likes
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div class="col-2">
+            <div id="card" class="card mt-5" style="width: 12rem;">
+              <img
+                class="card-img-top"
+                src="./assets/img/covid.png"
+                alt="Card image cap"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Coronavirus Blog</h5>
+                <p class="card-text">
+                  A real-time resource for Covid-19 news, advice, and commentary
+                </p>
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <a href="#">The Latest Research on Covid-19</a>
+                </li>
+                <li class="list-group-item"><a href="#">Case count</a></li>
+                <li class="list-group-item">
+                  <a href=""> Massive unemployment</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <svg
+      class="editorial"
+      xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink"
+      viewBox="0 24 150 28 "
+      preserveAspectRatio="none"
+    >
+      <defs>
+        <path
+          id="gentle-wave"
+          d="M-160 44c30 0 
+    58-18 88-18s
+    58 18 88 18 
+    58-18 88-18 
+    58 18 88 18
+    v44h-352z"
+        />
+      </defs>
+      <g class="parallax1">
+        <use xlink:href="#gentle-wave" x="50" y="3" fill="#f461c1" />
+      </g>
+      <g class="parallax2">
+        <use xlink:href="#gentle-wave" x="50" y="0" fill="#000" />
+      </g>
+      <g class="parallax3">
+        <use xlink:href="#gentle-wave" x="50" y="9" fill="#fff" />
+      </g>
+      <g class="parallax4">
+        <use xlink:href="#gentle-wave" x="50" y="6" fill="#4579e2" />
+      </g>
+    </svg>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
